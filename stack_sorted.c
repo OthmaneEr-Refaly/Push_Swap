@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:15:00 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/21 15:17:44 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/22 09:42:24 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ bool	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);
-	while (stack->next) //Loop until the end of the stack is reached
+	while (stack->next)
 	{
-		if (stack->nbr > stack->next->nbr) //Check if the current value is larger than the next node's value, indicating it is out of sort
+		if (stack->nbr > stack->next->nbr)
 			return (false);
-		stack = stack->next; //If not, move to the next node for processing
+		stack = stack->next;
 	}
 	return (true);
 }
