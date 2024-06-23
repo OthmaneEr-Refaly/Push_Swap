@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:44:03 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 08:40:57 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 10:32:31 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 }
 
 void	pa(t_stack_node **a, t_stack_node **b, bool print)
-{ 
-	push(a, b); 
-	if (!print) 
+{
+	push(a, b);
+	if (!print)
 		printf("pa\n");
 }
 

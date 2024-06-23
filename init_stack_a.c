@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:05:16 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 09:04:46 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 10:27:57 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static long	ft_atol(const char *s)
 	int		sign;
 
 	result = 0;
-	sign = 1; 
+	sign = 1;
 	while (*s == ' ' || *s == '\t' || *s == '\n' || \
 			*s == '\r' || *s == '\f' || *s == '\v')
 		s++;
@@ -72,7 +72,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a); 
+			free_errors(a);
 		append_node(a, (int)n);
 		i++;
 	}
@@ -110,6 +110,6 @@ void	prep_for_push(t_stack_node **stack,
 				rb(stack, false);
 			else
 				rrb(stack, false);
-		}	
+		}
 	}
 }

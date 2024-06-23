@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:00:08 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 08:37:31 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:09:23 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	// else if (argc == 2)
-	// 	argv = split(argv[1], ' ');
+	else if (argc == 2)
+		argv = split(argv[1], ' ');
 	init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
 	{
@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-	// free_stack(&a);
-	// return (0);
+	free_stack(&a);
+	return (0);
 }
