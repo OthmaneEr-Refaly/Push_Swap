@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:00:08 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/22 09:18:34 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 08:37:31 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int	main(int argc, char **argv)
 			sort_stacks(&a, &b);
 	}
 	// free_stack(&a);
-	return (0);
+	// return (0);
 }

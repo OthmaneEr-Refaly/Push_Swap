@@ -6,17 +6,26 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:18:21 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/22 09:58:49 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 08:56:41 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
+
 int	stack_len(t_stack_node *stack)
 {
 	int	count;
 
-	if (!stack)
+	if (!stack) 
 		return (0);
 	count = 0;
 	while (stack)
@@ -36,19 +45,6 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack)
-{
-	if (!stack)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->nbr > stack->next->nbr)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
-
 t_stack_node	*find_min(t_stack_node *stack)
 {
 	long			min;
@@ -66,7 +62,7 @@ t_stack_node	*find_min(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node);
+	return (min_node); 
 }
 
 t_stack_node	*find_max(t_stack_node *stack)

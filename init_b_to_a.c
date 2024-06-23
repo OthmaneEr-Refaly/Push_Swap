@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:52:14 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/22 09:17:17 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 08:54:55 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr
+			if (current_a->nbr > b->nbr 
 				&& current_a->nbr < best_match_index)
 			{
 				best_match_index = current_a->nbr;

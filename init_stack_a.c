@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:05:16 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/22 09:26:28 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/23 09:04:46 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static long	ft_atol(const char *s)
 	int		sign;
 
 	result = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
-		|| *s == '\v')
+	sign = 1; 
+	while (*s == ' ' || *s == '\t' || *s == '\n' || \
+			*s == '\r' || *s == '\f' || *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -33,7 +33,7 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-void	append_node(t_stack_node **stack, int n)
+static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
@@ -72,7 +72,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_errors(a); 
 		append_node(a, (int)n);
 		i++;
 	}
@@ -91,11 +91,25 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-int	ft_isdigit(int c)
+void	prep_for_push(t_stack_node **stack,
+						t_stack_node *top_node,
+						char stack_name)
 {
-	if (c >= '0' && c <= '9')
+	while (*stack != top_node)
 	{
-		return (1);
+		if (stack_name == 'a')
+		{
+			if (top_node->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}	
 	}
-	return (0);
 }
