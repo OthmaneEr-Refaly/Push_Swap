@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:05:42 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 16:07:57 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:23:00 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	count_words(char *s, char c)
 		inside_word = false;
 		while (*s == c)
 			++s;
-		while (*s != c && *s) 
+		while (*s != c && *s)
 		{
 			if (!inside_word)
 			{
@@ -58,7 +58,7 @@ static char	*get_next_word(char *s, char c)
 	return (next_word);
 }
 
-char **split(char *s, char c)
+char	**split(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;

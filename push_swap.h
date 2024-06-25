@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 09:52:20 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 16:08:13 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/25 09:22:36 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void			free_errors(t_stack_node **a);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			min_on_top(t_stack_node **a);
-char 			**split(char *s, char c);
+char			**split(char *s, char c);
 
 #endif
