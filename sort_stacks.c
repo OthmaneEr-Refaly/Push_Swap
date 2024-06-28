@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:38:37 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/06/23 10:42:32 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/06/26 10:23:35 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	while (*b)
 	{
 		init_nodes_b(*a, *b);
-		move_b_to_a(a, b);
+		move_b_to_a(a, b); 
 	}
 	current_index(*a);
 	min_on_top(a);
