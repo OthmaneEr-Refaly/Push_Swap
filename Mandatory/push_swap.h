@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 09:52:20 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/04 08:40:05 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:38:35 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			free_errors(t_stack_node **a);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			min_on_top(t_stack_node **a);
-char 			**split(char *s, char c);
+char			**split(char *s, char c);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t n);
@@ -70,5 +70,13 @@ char			**process_arguments(int argc, char **argv);
 long			ft_atol(const char *s);
 char			*ft_strdup(const char *s1);
 void    		free_numbers(char **numbers);
+int 			ft_isspace(int c);
+size_t			ft_strlen(const char *s);
+void			ft_putstr_fd(char *s, int fd);
+char **allocate_and_fill_numbers(int argc, char **argv, int total_numbers);
+int has_non_whitespace_arg(int argc, char **argv);
+void free_numbers_array(char **numbers, int count);
+int count_total_numbers(int argc, char **argv);
+
 
 #endif

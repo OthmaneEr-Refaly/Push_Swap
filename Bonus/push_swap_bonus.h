@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:02:48 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/02 10:39:20 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/05 08:29:26 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ int				error_duplicate(t_stack_node *a, int n);
 void			free_errors(t_stack_node **a);
 void			moves_checker(t_stack_node **stack_a, t_stack_node **stack_b);
 long			ft_atol(const char *s);
+int 			ft_isspace(int c);
+int				ft_isdigit(int c);
 
 #endif

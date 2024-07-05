@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   res2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 12:38:17 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/05 08:31:53 by oer-refa         ###   ########.fr       */
+/*   Created: 2024/07/05 08:14:39 by oer-refa          #+#    #+#             */
+/*   Updated: 2024/07/05 08:34:02 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "push_swap.h"
 
-void	ft_putstr_fd(char *s, int fd)
+
+
+int ft_isspace(int c)
 {
-	int	i;
+    return (c == ' ' || c == '\t' || c == '\n' ||
+            c == '\v' || c == '\f' || c == '\r');
+}
 
-	if (s == NULL)
-		return ;
-	i = ft_strlen(s);
-	write(fd, s, i);
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
 }

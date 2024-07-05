@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:00:08 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/03 14:54:51 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:37:30 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,33 @@ static void	sort_stack(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	char			**numbers;
+    t_stack_node *a;
+    t_stack_node *b;
+    char **numbers;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (0);
-	numbers = process_arguments(argc, argv);
-	if (check_errors(numbers))
-		return (1);
-	init_stack_a(&a, numbers);
-	sort_stack(&a, &b);
-	free_numbers(numbers);
-	free_stack(&a);
-	return (0);
+    a = NULL;
+    b = NULL;
+    if (argc == 1 || (argc == 2 && !argv[1][0]))
+        return (0);
+    
+    numbers = process_arguments(argc, argv);
+    if (!numbers)
+    {
+        ft_putstr_fd("Error\n", 2);
+        return (1);
+    }
+
+    if (check_errors(numbers))
+    {
+        free_numbers(numbers);
+        return (1);
+    }
+
+    init_stack_a(&a, numbers);
+    sort_stack(&a, &b);
+    free_numbers(numbers);
+    free_stack(&a);
+    return (0);
 }

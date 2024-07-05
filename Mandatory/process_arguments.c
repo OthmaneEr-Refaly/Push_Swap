@@ -6,83 +6,160 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 13:41:42 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/04 08:40:21 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:37:39 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**allocate_numbers(int argc)
+char **process_arguments(int argc, char **argv)
 {
-	char	**numbers;
+    int total_numbers;
+    char **numbers;
 
-	numbers = malloc(sizeof(char *) * (argc * 100));
-	if (!numbers)
-		return (NULL);
-	return (numbers);
+    if (!has_non_whitespace_arg(argc, argv))
+        return NULL;
+
+    total_numbers = count_total_numbers(argc, argv);
+    if (total_numbers == 0)
+        return NULL;
+
+    numbers = allocate_and_fill_numbers(argc, argv, total_numbers);
+    return numbers;
 }
 
-void	process_split_result(char **split_result, char **numbers, int *j)
+int count_total_numbers(int argc, char **argv)
 {
-	int	k;
+    int total_numbers = 0;
+    char *arg;
+    int arg_len;
+    int i;
+    int j;
 
-	k = 0;
-	while (split_result[k])
-	{
-		if (split_result[k][0] != '\0' && !ft_strchr(split_result[k], '='))
-			numbers[(*j)++] = split_result[k];
-		else
-			free(split_result[k]);
-		k++;
-	}
+    
+    i = 1;
+    arg = argv[i];
+    arg_len = ft_strlen(arg);
+    while (i < argc)
+    {
+        j = 0;
+        while (j < arg_len)
+        {
+            while (j < arg_len && ft_isspace(arg[j]))
+                j++;
+            if (j == arg_len)
+                break;
+            if (ft_isdigit(arg[j]) || ((arg[j] == '-' || arg[j] == '+') && 
+                j + 1 < arg_len && ft_isdigit(arg[j+1])))
+            {
+                total_numbers++;
+                while (j < arg_len && !ft_isspace(arg[j]))
+                    j++;
+            }
+            else
+                j++;
+        }
+        i++;
+    }
+    return total_numbers;
 }
 
-static char	**process_single_argument(char *arg)
+char **allocate_and_fill_numbers(int argc, char **argv, int total_numbers)
 {
-	char	**numbers;
-
-	numbers = split(arg, ' ');
-	if (!numbers || !*numbers)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	return (numbers);
+    char **numbers;
+    char *arg;
+    int arg_len;
+    int start;
+    int k;
+    int i;
+    int j;
+    
+    numbers = malloc(sizeof(char *) * (total_numbers + 1));
+    if (!numbers)
+        return NULL;
+    k = 0;
+    i = 1;
+    while (i < argc && k < total_numbers)
+    {
+        arg = argv[i];
+        arg_len = ft_strlen(arg);
+        j = 0;
+        while (j < arg_len && k < total_numbers)
+        {
+            while (j < arg_len && ft_isspace(arg[j]))
+                j++;
+            if (j == arg_len)
+                break;
+            if (ft_isdigit(arg[j]) || ((arg[j] == '-' || arg[j] == '+') && 
+                j + 1 < arg_len && ft_isdigit(arg[j+1])))
+            {
+                start = j;
+                while (j < arg_len && !ft_isspace(arg[j]))
+                    j++;
+                numbers[k] = malloc(j - start + 1);
+                if (!numbers[k])
+                {
+                    free_numbers_array(numbers, k);
+                    return NULL;
+                }
+                ft_strncpy(numbers[k], arg + start, j - start);
+                numbers[k][j - start] = '\0';
+                k++;
+            }
+            else
+                j++;
+        }
+        i++;
+    }
+    numbers[k] = NULL;
+    return numbers;
 }
 
-static char	**process_multiple_arguments(int argc, char **argv)
+int has_non_whitespace_arg(int argc, char **argv)
 {
-	char	**numbers;
-	int		i;
+    int i;
+    int j;
 
-	numbers = malloc(sizeof(char *) * argc);
-	if (!numbers)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		numbers[i - 1] = ft_strdup(argv[i]);
-		if (!numbers[i - 1])
-		{
-			while (--i >= 0)
-				free(numbers[i]);
-			free(numbers);
-			write(2, "Error\n", 6);
-			exit(1);
-		}
-		i++;
-	}
-	numbers[argc - 1] = NULL;
-	return (numbers);
+    i = 1;
+    while (i < argc)
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            if (!ft_isspace(argv[i][j]))
+                return 1;
+            j++;
+        }
+        i++;
+    }
+    return 0;
 }
 
-char	**process_arguments(int argc, char **argv)
+void free_numbers_array(char **numbers, int count)
 {
-	if (argc == 2)
-		return (process_single_argument(argv[1]));
-	else
-		return (process_multiple_arguments(argc, argv));
+    int i;
+    
+    i = 0;
+    while (i < count)
+    {
+        free(numbers[i]);
+        i++;
+    }
+    free(numbers);
+}
+
+char *ft_strncpy(char *dest, const char *src, size_t n)
+{
+    size_t i;
+
+    i = 0;
+    while (i < n && src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    while (i < n) {
+        dest[i] = '\0';
+        i++;
+    }
+    return dest;
 }

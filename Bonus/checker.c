@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:03:37 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/02 10:14:33 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/05 08:43:17 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,42 @@ bool	stack_sorted(t_stack_node *stack)
 	return (true);
 }
 
-int	main(int argc, char *argv[])
+void free_numbers(char **numbers)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	char			**numbers;
-	int				i;
+    int i = 0;
+    while (numbers[i])
+        free(numbers[i++]);
+    free(numbers);
+}
 
-	i = 0;
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	numbers = process_arguments(argc, argv);
-	init_stack_a_bonus(&a, numbers);
-	moves_checker(&a, &b);
-	if (stack_sorted(a) && !b)
-		ft_putstr_fd("OK\n", 1);
-	else
-		ft_putstr_fd("KO\n", 1);
-	free_stack(&a);
-	free_stack(&b);
-	while (numbers[i])
-		free(numbers[i++]);
-	free(numbers);
-	return (0);
+int main(int argc, char *argv[])
+{
+    t_stack_node *a;
+    t_stack_node *b;
+    char **numbers;
+
+    a = NULL;
+    b = NULL;
+    if (argc == 1 || (argc == 2 && !argv[1][0]))
+        return (0);
+
+    numbers = process_arguments(argc, argv);
+    if (!numbers)
+    {
+        ft_putstr_fd("Error\n", 2);
+        return (1);
+    }
+    init_stack_a_bonus(&a, numbers);
+    moves_checker(&a, &b);
+
+    if (stack_sorted(a) && !b)
+        ft_putstr_fd("OK\n", 1);
+    else
+        ft_putstr_fd("KO\n", 1);
+
+    free_stack(&a);
+    free_stack(&b);
+    free_numbers(numbers);
+
+    return (0);
 }
