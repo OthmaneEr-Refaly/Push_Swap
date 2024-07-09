@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 08:14:39 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/05 08:34:02 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/09 13:19:56 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int ft_isspace(int c)
             c == '\v' || c == '\f' || c == '\r');
 }
 
-int	ft_isdigit(int c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 	{
 		return (1);
 	}
-	return (0);
+	else if (c == '+' || c == '-')
+		return (1);
+	write(2,"Error\n",6);
+	exit (0);
 }

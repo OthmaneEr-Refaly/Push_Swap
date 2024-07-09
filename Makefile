@@ -7,7 +7,7 @@ BONUS_DIR = Bonus
 SRC_FILES = push_swap.c init_stack_a.c res.c rotate.c sort_three.c \
             swap.c stack_sorted.c rev_rotate.c sort_stacks.c ../Bonus/ft_atol.c \
             push.c init_a_to_b.c init_b_to_a.c errors.c split.c res2.c process_arguments.c ft_strdup.c \
-			../Bonus/ft_putstr_fd.c
+			../Bonus/ft_putstr_fd.c counting_num.c
 			
 
 SRCB_FILES = checker.c init_stack_a_bonus.c get_next_line.c get_next_line_utils.c \
@@ -22,7 +22,7 @@ OBG = $(SRC:.c=.o)
 OBGB = $(SRCB:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
 
 all: $(NAME)

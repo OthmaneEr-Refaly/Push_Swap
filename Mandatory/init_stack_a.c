@@ -6,44 +6,44 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:05:16 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/02 10:49:39 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/09 12:01:50 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static	long	ft_atol(const char *s)
-// {
-// 	long	result;
-// 	int		sign;
-// 	long	prev;
+static	long	ft_atol(const char *s)
+{
+	long	result;
+	int		sign;
+	long	prev;
 
-// 	result = 0;
-// 	sign = 1;
-// 	while (*s == ' ' || *s == '\t' || *s == '\n'
-// 		|| *s == '\r' || *s == '\f' || *s == '\v')
-// 		s++;
-// 	if (*s == '-' || *s == '+')
-// 	{
-// 		if (*s == '-')
-// 			sign = -1;
-// 		s++;
-// 	}
-// 	while (*s >= '0' && *s <= '9')
-// 	{
-// 		prev = result;
-// 		result = result * 10 + (*s - '0');
-// 		if (result < prev)
-// 		{
-// 			if (sign == 1)
-// 				return (LONG_MAX);
-// 			else
-// 				return (LONG_MIN);
-// 		}
-// 		s++;
-// 	}
-// 	return (result * sign);
-// }
+	result = 0;
+	sign = 1;
+	while (*s == ' ' || *s == '\t' || *s == '\n'
+		|| *s == '\r' || *s == '\f' || *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+	{
+		prev = result;
+		result = result * 10 + (*s - '0');
+		if (result < prev)
+		{
+			if (sign == 1)
+				return (LONG_MAX);
+			else
+				return (LONG_MIN);
+		}
+		s++;
+	}
+	return (result * sign);
+}
 
 static void	append_node(t_stack_node **stack, int n)
 {

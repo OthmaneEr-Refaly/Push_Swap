@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 08:43:39 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/04 09:38:47 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/09 13:15:23 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	error_syntax(char *str_n)
 	if (*str_n == '+' || *str_n == '-')
 		str_n++;
 	if (*str_n < '0' || *str_n > '9')
+	{
+		printf("sd");
 		return (1);
+	}
 	while (*str_n >= '0' && *str_n <= '9')
 		str_n++;
 	while (*str_n == ' ' || *str_n == '\t')

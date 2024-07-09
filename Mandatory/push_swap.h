@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 09:52:20 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/05 09:38:35 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:37:18 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 void			init_stack_a(t_stack_node **a, char **argv);
-int				ft_isdigit(int c);
+int	ft_isdigit(char c);
 bool			stack_sorted(t_stack_node *stack);
 int				stack_len(t_stack_node *stack);
 void			sa(t_stack_node	**a);
@@ -67,7 +67,7 @@ void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			**process_arguments(int argc, char **argv);
-long			ft_atol(const char *s);
+// long			ft_atol(const char *s);
 char			*ft_strdup(const char *s1);
 void    		free_numbers(char **numbers);
 int 			ft_isspace(int c);
@@ -77,6 +77,7 @@ char **allocate_and_fill_numbers(int argc, char **argv, int total_numbers);
 int has_non_whitespace_arg(int argc, char **argv);
 void free_numbers_array(char **numbers, int count);
 int count_total_numbers(int argc, char **argv);
-
+int				counting(char *arg);
+void			ft_some(char **numbers, char *argv, int total_numbers, int *k);
 
 #endif
