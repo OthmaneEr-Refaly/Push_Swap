@@ -6,43 +6,97 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:05:16 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/09 12:01:50 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/10 09:41:37 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	long	ft_atol(const char *s)
-{
-	long	result;
-	int		sign;
-	long	prev;
+// static	long	ft_atol(const char *s)
+// {
+// 	long	(result) , (prev);
+// 	int		sign;
 
-	result = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n'
-		|| *s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
+// 	result = 0;
+// 	sign = 1;
+// 	while (*s == ' ' || (*s >= 9 && *s <= 13))
+// 		s++;
+// 	if (*s == '-' || *s == '+')
+// 	{
+// 		if (*s == '-')
+// 			sign = -1;
+// 		s++;
+// 	}
+// 	while (*s >= '0' && *s <= '9')
+// 	{
+// 		prev = result;
+// 		result = result * 10 + (*s - '0');
+// 		if (result < prev)
+// 		{
+// 			if (sign == 1)
+// 				return (LONG_MAX);
+// 			else
+// 				return (LONG_MIN);
+// 		}
+// 		s++;
+// 	}
+// 	return (result * sign);
+// }
+// void free_all(char **argv, t_stack_node **a)
+// {
+
+// 	int	i;
+
+// 	i = 0;
+// 	while (argv[i])
+// 		free(argv[i++]);
+// 	free(argv);
+// 	free_stack(a);
+// 	exit(1);
+// }
+
+long long	result(char *argv, int i)
+{
+	int			r;
+	long long	d;
+
+	r = 0;
+	d = 0;
+	while (argv[i] >= '0' && argv[i] <= '9')
 	{
-		if (*s == '-')
-			sign = -1;
-		s++;
+		r = (r * 10) + (argv[i] - '0');
+		d = (d * 10) + (argv[i] - '0');
+		i++;
 	}
-	while (*s >= '0' && *s <= '9')
+	return (d);
+}
+
+int	ft_atoi(char *argv, t_stack_node **a)
+{
+	int			i;
+	int			s;
+	long long	d;
+
+	i = 0;
+	s = 1;
+	while ((argv[i] >= 9 && argv[i] <= 13) || (argv[i] == ' '))
+		i++;
+	if (argv[i] == '+' || argv[i] == '-')
 	{
-		prev = result;
-		result = result * 10 + (*s - '0');
-		if (result < prev)
-		{
-			if (sign == 1)
-				return (LONG_MAX);
-			else
-				return (LONG_MIN);
-		}
-		s++;
+		if (argv[i] == '-')
+			s = s * -1;
+		i++;
 	}
-	return (result * sign);
+	d = result(argv, i) * s;
+	if (d > INT_MAX || d < INT_MIN)
+	{
+		i = 0;
+		printf("Max Error");
+		// free_all(&argv,a);
+		free_errors(a);
+		exit(1);
+	}
+	return (result(argv, i) * s);
 }
 
 static void	append_node(t_stack_node **stack, int n)
@@ -81,9 +135,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	{
 		if (error_syntax(argv[i]))
 			free_errors(a);
-		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
+		n = ft_atoi(argv[i],a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
 		append_node(a, (int)n);

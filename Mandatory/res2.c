@@ -6,18 +6,16 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 08:14:39 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/07/09 13:19:56 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/07/10 09:17:32 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
-    return (c == ' ' || c == '\t' || c == '\n' ||
-            c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r');
 }
 
 int	ft_isdigit(char c)
@@ -28,6 +26,6 @@ int	ft_isdigit(char c)
 	}
 	else if (c == '+' || c == '-')
 		return (1);
-	write(2,"Error\n",6);
-	exit (0);
+	write(2, "Error\n", 6);
+	exit(0);
 }

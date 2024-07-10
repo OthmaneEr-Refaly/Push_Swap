@@ -18,7 +18,7 @@ char	**process_arguments(int argc, char **argv)
 	char	**numbers;
 
 	if (!has_non_whitespace_arg(argc, argv))
-		exit (1);
+		exit(1);
 	total_numbers = count_total_numbers(argc, argv);
 	if (total_numbers == 0)
 		return (NULL);
@@ -26,7 +26,7 @@ char	**process_arguments(int argc, char **argv)
 	if (!numbers)
 	{
 		free_numbers(numbers);
-		return(NULL);	
+		return (NULL);
 	}
 	return (numbers);
 }
@@ -68,7 +68,7 @@ int	has_non_whitespace_arg(int argc, char **argv)
 		}
 		i++;
 	}
-	write(2,"Error\n",6);
+	write(2, "Error\n", 6);
 	return (0);
 }
 
